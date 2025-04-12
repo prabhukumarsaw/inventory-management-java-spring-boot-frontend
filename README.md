@@ -42,9 +42,17 @@ A full-stack Inventory Management System built using **Java Spring Boot** (backe
 
 ---
 
+## ⚙️ Frontend Setup (NextJS 15)
+
+### 1. Clone Frontend
+```bash
+git clone https://github.com/prabhukumarsaw/inventory-management-java-spring-boot-frontend.git
+cd inventory-management-java-spring-boot-frontend
+
+
 ## ⚙️ Backend Setup (Spring Boot)
 
-### 1. Clone Backend
+### Clone Backend
 ```bash
-git clone https://github.com/yourusername/inventory-management-system.git
-cd inventory-management-system/backend
+git clone https://github.com/prabhukumarsaw/inventory-management-java-spring-boot.git
+cd inventory-management-java-spring-boot
