@@ -11,6 +11,7 @@ import {
   ClipboardList,
   Menu,
   X,
+  ListOrdered,
 } from 'lucide-react';
 
 import {
@@ -37,22 +38,27 @@ const data = {
 const navItems = [
   {
     title: 'Dashboard',
-    href: '/',
+    href: '/dashboard',
     icon: BarChart3,
   },
   {
     title: 'Products',
-    href: '/products',
+    href: '/dashboard/products',
     icon: Package,
   },
   {
     title: 'Inventory',
-    href: '/inventory',
+    href: '/dashboard/inventory',
     icon: ClipboardList,
   },
   {
     title: 'Orders',
-    href: '/orders',
+    href: '/dashboard/orders',
+    icon: ListOrdered,
+  },
+  {
+    title: '🛒 POS Shop',
+    href: '/',
     icon: ShoppingCart,
   },
 ];

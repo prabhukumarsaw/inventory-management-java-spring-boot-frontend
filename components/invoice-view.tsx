@@ -19,7 +19,7 @@ export function InvoiceView({ order }: InvoiceViewProps) {
   };
 
   const calculateTax = () => {
-    return calculateSubtotal() * 0.1;
+    return calculateSubtotal() * 0.0;
   };
 
   const calculateTotal = () => {
@@ -98,7 +98,7 @@ export function InvoiceView({ order }: InvoiceViewProps) {
             </tr>
             <tr>
               <td colSpan={3} className="border p-2 text-right font-semibold">
-                Tax (10%):
+                Tax (0%):
               </td>
               <td className="border p-2 text-right">
                 ₹{calculateTax().toFixed(2)}

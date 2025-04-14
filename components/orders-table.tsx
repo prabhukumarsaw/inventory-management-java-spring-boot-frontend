@@ -18,6 +18,7 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
+  DialogTrigger,
 } from '@/components/ui/dialog';
 import {
   DropdownMenu,
@@ -355,10 +356,14 @@ export function OrdersTable() {
       </div>
 
       <Dialog open={invoiceDialogOpen} onOpenChange={setInvoiceDialogOpen}>
+        {/* Proper clickable trigger (can be styled however you want) */}
+        <DialogTrigger asChild>
+          <Button variant="outline">View Invoice #{selectedOrder?.id}</Button>
+        </DialogTrigger>
+
         <DialogContent className="max-w-xl w-full h-[95vh] rounded-2xl p-0 sm:p-0 flex flex-col">
-          {/* Sticky Header */}
-          <div className="sticky top-0  z-10 px-6 py-4 border-b flex justify-between items-center">
-            {/* Hidden for visuals, visible for screen readers */}
+          {/* Sticky Header INSIDE Dialog */}
+          <div className="sticky top-0 z-10 px-6 py-4 border-b flex justify-between items-center bg-background">
             <DialogTitle asChild>
               <VisuallyHidden>Invoice #{selectedOrder?.id}</VisuallyHidden>
             </DialogTitle>
@@ -400,7 +405,7 @@ export function OrdersTable() {
           {/* Scrollable Invoice Content */}
           <div
             id="invoice-content"
-            className="overflow-y-auto p-6 scrollbar-thin"
+            className="overflow-y-auto p-6 scrollbar-thin flex-1"
           >
             {selectedOrder && <InvoiceView order={selectedOrder} />}
           </div>

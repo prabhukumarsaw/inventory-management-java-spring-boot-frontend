@@ -23,15 +23,29 @@ export function ItemCard({
   category,
   quantityAvailable,
 }: ItemCardProps) {
-  const { addItem } = useCart();
+  const { items, addItem } = useCart();
   const [isAdded, setIsAdded] = useState(false);
 
   const handleAddToCart = () => {
-    if (quantityAvailable <= 0) return;
+    if (quantityAvailable <= 0) return; // Do not allow adding to cart if no stock
 
+    // Check if the product is already in the cart
+    const existingItem = items.find((item) => item.productId === id);
+
+    if (existingItem) {
+      // Check if adding another item would exceed available stock
+      const newQuantity = existingItem.quantity + 1;
+      if (newQuantity > quantityAvailable) {
+        alert('You cannot add more than the available quantity!');
+        return;
+      }
+    }
+
+    // Add item to the cart
     addItem(id, name, price);
     setIsAdded(true);
 
+    // Reset "Added" state after 1.5 seconds
     setTimeout(() => {
       setIsAdded(false);
     }, 1500);
@@ -67,7 +81,7 @@ export function ItemCard({
           </Badge>
         )}
         {quantityAvailable > 0 && quantityAvailable < 5 && (
-          <Badge variant="outline" className="absolute top-2 right-2">
+          <Badge variant="destructive" className="absolute top-2 right-2">
             Low: {quantityAvailable}
           </Badge>
         )}
